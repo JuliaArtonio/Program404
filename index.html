@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы программирования на Pascal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            background-image: url(https://cdn.pixabay.com/photo/2016/03/27/07/32/space-1282131_1280.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        html::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(75, 0, 130, 0.6);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body {
+            position: relative;
+            z-index: 1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(106, 13, 173, 0.85);
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-family: 'Monotype Corsiva', cursive;
+            font-size: 48px;
+            color: #E8B8FF;
+            margin: 0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 20px;
+            height: fit-content;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h3 {
+            color: #6A1B9A;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid #DDA0DD;
+            padding-bottom: 5px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            color: #4A148C;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .sidebar button:hover {
+            background-color: #DDA0DD;
+            color: #fff;
+        }
+
+        .viewer {
+            flex: 1;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 70vh;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .viewer-header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .viewer-header h2 {
+            color: #6A1B9A;
+            font-size: 22px;
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .nav-prev {
+            background-color: #6A1B9A;
+            color: white;
+        }
+
+        .nav-prev:hover {
+            background-color: #4A148C;
+        }
+
+        .nav-next {
+            background-color: #9C27B0;
+            color: white;
+        }
+
+        .nav-next:hover {
+            background-color: #7B1FA2;
+        }
+
+        .nav-home {
+            background-color: #CD5C5C;
+            color: white;
+        }
+
+        .nav-home:hover {
+            background-color: #8B0000;
+        }
+
+        .nav-practice, .nav-lecture {
+            background-color: #DDA0DD;
+            color: #4A148C;
+        }
+
+        .nav-practice:hover, .nav-lecture:hover {
+            background-color: #C38EC7;
+        }
+
+        .test-online {
+            background-color: rgba(106, 13, 173, 0.85);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .test-online h3 {
+            font-family: 'Monotype Corsiva', cursive;
+            font-size: 28px;
+            color: #E8B8FF;
+            margin-bottom: 15px;
+        }
+
+        .test-online-link {
+            display: inline-block;
+            margin: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 20px;
+            background-color: #9C27B0;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .test-online-link:hover {
+            background-color: #7B1FA2;
+            transform: scale(1.05);
+        }
+
+        .quote {
+            text-align: center;
+            font-family: 'Monotype Corsiva', cursive;
+            font-size: 26px;
+            color: #F3E5F5;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(75, 0, 130, 0.6);
+            border-radius: 10px;
+        }
+
+        .quote span {
+            color: #DDA0DD;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+            }
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Основы программирования на Pascal</h1>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="sidebar">
+            <h3>📚 Лекции</h3>
+            <ul>
+                <li><button onclick="loadFile('Лекция1.pdf', 'lecture', 1)">Лекция 1 — Введение. Понятие алгоритма</button></li>
+                <li><button onclick="loadFile('Лекция2.pdf', 'lecture', 2)">Лекция 2 — Типы данных</button></li>
+                <li><button onclick="loadFile('Лекция3.pdf', 'lecture', 3)">Лекция 3 — Операторы, выражения, ввод/вывод</button></li>
+                <li><button onclick="loadFile('Лекция4.pdf', 'lecture', 4)">Лекция 4 — Линейные алгоритмы и ветвление</button></li>
+                <li><button onclick="loadFile('Лекция5.pdf', 'lecture', 5)">Лекция 5 — Циклы</button></li>
+                <li><button onclick="loadFile('Лекция6.pdf', 'lecture', 6)">Лекция 6 — Массивы</button></li>
+                <li><button onclick="loadFile('Лекция7.pdf', 'lecture', 7)">Лекция 7 — Удаление, вставка, сортировка</button></li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">✍️ Практика</h3>
+            <ul>
+                <li><button onclick="loadFile('Практика1.pdf', 'practice', 1)">Практика 1 — Алгоритмы</button></li>
+                <li><button onclick="loadFile('Практика2.pdf', 'practice', 2)">Практика 2 — Типы данных</button></li>
+                <li><button onclick="loadFile('Практика3.pdf', 'practice', 3)">Практика 3 — Основы Pascal</button></li>
+                <li><button onclick="loadFile('Практика4.pdf', 'practice', 4)">Практика 4 — Линейные алгоритмы и ветвление</button></li>
+                <li><button onclick="loadFile('Практика5.pdf', 'practice', 5)">Практика 5 — Циклы</button></li>
+                <li><button onclick="loadFile('Практика6.pdf', 'practice', 6)">Практика 6 — Массивы</button></li>
+                <li><button onclick="loadFile('Практика7.pdf', 'practice', 7)">Практика 7 — Удаление, вставка, сортировка</button></li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">📝 Тесты</h3>
+            <ul>
+                <li><button onclick="loadTestQuestions()">📋 Вопросы к тесту</button></li>
+            </ul>
+        </div>
+
+        <div class="viewer">
+            <div class="viewer-header">
+                <h2 id="current-title">Выберите лекцию или практику</h2>
+            </div>
+            <iframe id="pdf-viewer" class="pdf-frame" src=""></iframe>
+            
+            <div class="nav-buttons" id="nav-buttons">
+                <button class="nav-btn nav-home" onclick="goHome()">🏠 Главная</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок с онлайн-тестом -->
+    <div class="test-online">
+        <h3>✅ Пройти онлайн-тест</h3>
+        <a class="test-online-link" href="https://onlinetestpad.com/c37hmemuksg6g" target="_blank">Начать тестирование</a>
+    </div>
+
+    <div class="quote">
+        Плохой программист — это тот, кто заботится только о том, чтобы код работал.<br>
+        Хороший программист — тот, кто заботится о том, чтобы код было легко читать<br>
+        и поддерживать.<br>
+        <span>Роберт Мартин</span>
+    </div>
+</div>
+
+<script>
+    let currentType = 'lecture';
+    let currentIndex = 0;
+    let isTestQuestions = false;
+
+    const lectures = [
+        { name: 'Лекция 1 — Введение. Понятие алгоритма', file: 'Лекция1.pdf' },
+        { name: 'Лекция 2 — Типы данных', file: 'Лекция2.pdf' },
+        { name: 'Лекция 3 — Операторы, выражения, ввод/вывод', file: 'Лекция3.pdf' },
+        { name: 'Лекция 4 — Линейные алгоритмы и ветвление', file: 'Лекция4.pdf' },
+        { name: 'Лекция 5 — Циклы', file: 'Лекция5.pdf' },
+        { name: 'Лекция 6 — Массивы', file: 'Лекция6.pdf' },
+        { name: 'Лекция 7 — Удаление, вставка, сортировка', file: 'Лекция7.pdf' }
+    ];
+
+    const practices = [
+        { name: 'Практика 1 — Алгоритмы', file: 'Практика1.pdf', lectureIndex: 0 },
+        { name: 'Практика 2 — Типы данных', file: 'Практика2.pdf', lectureIndex: 1 },
+        { name: 'Практика 3 — Основы Pascal', file: 'Практика3.pdf', lectureIndex: 2 },
+        { name: 'Практика 4 — Линейные алгоритмы и ветвление', file: 'Практика4.pdf', lectureIndex: 3 },
+        { name: 'Практика 5 — Циклы', file: 'Практика5.pdf', lectureIndex: 4 },
+        { name: 'Практика 6 — Массивы', file: 'Практика6.pdf', lectureIndex: 5 },
+        { name: 'Практика 7 — Удаление, вставка, сортировка', file: 'Практика7.pdf', lectureIndex: 6 }
+    ];
+
+    function loadFile(filename, type, index) {
+        currentType = type;
+        currentIndex = index;
+        isTestQuestions = false;
+        
+        let title = '';
+        if (type === 'lecture') {
+            title = lectures[index - 1].name;
+        } else {
+            title = practices[index - 1].name;
+        }
+        
+        document.getElementById('current-title').innerHTML = title;
+        document.getElementById('pdf-viewer').src = `files/${filename}`;
+        
+        updateNavButtons();
+    }
+
+    function loadTestQuestions() {
+        currentType = 'test';
+        currentIndex = 0;
+        isTestQuestions = true;
+        
+        document.getElementById('current-title').innerHTML = '📋 Вопросы к тесту';
+        document.getElementById('pdf-viewer').src = 'files/Вопросы_к_тесту.pdf';
+        
+        updateNavButtons();
+    }
+
+    function updateNavButtons() {
+        const navDiv = document.getElementById('nav-buttons');
+        let buttons = '';
+        
+        buttons += '<button class="nav-btn nav-home" onclick="goHome()">🏠 Главная</button>';
+        
+        if (isTestQuestions) {
+            // Для вопросов к тесту — только кнопка "Главная"
+        }
+        else if (currentType === 'lecture') {
+            if (currentIndex > 1) {
+                buttons += `<button class="nav-btn nav-prev" onclick="loadFile('Лекция${currentIndex-1}.pdf', 'lecture', ${currentIndex-1})">← Предыдущая лекция</button>`;
+            }
+            if (currentIndex < lectures.length) {
+                buttons += `<button class="nav-btn nav-next" onclick="loadFile('Лекция${currentIndex+1}.pdf', 'lecture', ${currentIndex+1})">Следующая лекция →</button>`;
+            }
+            buttons += `<button class="nav-btn nav-practice" onclick="loadFile('Практика${currentIndex}.pdf', 'practice', ${currentIndex})">📖 Перейти к практике ${currentIndex}</button>`;
+        } 
+        else if (currentType === 'practice') {
+            if (currentIndex > 1) {
+                buttons += `<button class="nav-btn nav-prev" onclick="loadFile('Практика${currentIndex-1}.pdf', 'practice', ${currentIndex-1})">← Предыдущая практика</button>`;
+            }
+            if (currentIndex < practices.length) {
+                buttons += `<button class="nav-btn nav-next" onclick="loadFile('Практика${currentIndex+1}.pdf', 'practice', ${currentIndex+1})">Следующая практика →</button>`;
+            }
+            buttons += `<button class="nav-btn nav-lecture" onclick="loadFile('Лекция${currentIndex}.pdf', 'lecture', ${currentIndex})">📚 Перейти к лекции ${currentIndex}</button>`;
+        }
+        
+        navDiv.innerHTML = buttons;
+    }
+
+    function goHome() {
+        document.getElementById('current-title').innerHTML = 'Выберите лекцию или практику';
+        document.getElementById('pdf-viewer').src = '';
+        currentType = 'lecture';
+        currentIndex = 0;
+        isTestQuestions = false;
+        document.getElementById('nav-buttons').innerHTML = '<button class="nav-btn nav-home" onclick="goHome()">🏠 Главная</button>';
+    }
+</script>
+</body>
+</html>
