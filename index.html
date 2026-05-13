@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -41,7 +41,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -60,6 +60,47 @@
             margin: 0;
         }
 
+        /* Вкладки */
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: rgba(106, 13, 173, 0.7);
+            color: #E8B8FF;
+            border: none;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            background-color: rgba(106, 13, 173, 0.9);
+        }
+
+        .tab-btn.active {
+            background-color: #FFFFFF;
+            color: #6A1B9A;
+        }
+
+        .tab-content {
+            display: none;
+            background-color: #FFFFFF;
+            border-radius: 0 15px 15px 15px;
+            padding: 20px;
+            min-height: 500px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Вкладка с материалами */
         .content-wrapper {
             display: flex;
             gap: 20px;
@@ -111,7 +152,7 @@
 
         .viewer {
             flex: 1;
-            background-color: #FFFFFF;
+            background-color: #F9F9F9;
             border-radius: 15px;
             padding: 20px;
             min-height: 70vh;
@@ -186,46 +227,125 @@
             color: #4A148C;
         }
 
-        .nav-practice:hover, .nav-lecture:hover {
-            background-color: #C38EC7;
+        /* Стили для теста */
+        .test-container {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 15px;
         }
 
-        .test-online {
-            background-color: rgba(106, 13, 173, 0.85);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            margin-top: 30px;
+        .test-question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #F9F9F9;
+            border-radius: 10px;
+            border-left: 4px solid #6A1B9A;
         }
 
-        .test-online h3 {
-            font-family: 'Monotype Corsiva', cursive;
-            font-size: 28px;
-            color: #E8B8FF;
+        .test-question p {
+            font-weight: bold;
             margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
         }
 
-        .test-online-link {
-            display: inline-block;
-            margin: 10px 15px;
-            font-size: 16px;
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 20px;
-            background-color: #9C27B0;
+        .test-options {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .test-options li {
+            margin: 10px 0;
+            color: #555;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .test-options li:hover {
+            background-color: #E8E8E8;
+        }
+
+        .test-options li.selected {
+            background-color: #DDA0DD;
+            border-color: #6A1B9A;
+            color: #4A148C;
+        }
+
+        .test-section-title {
+            color: #6A1B9A;
+            margin: 20px 0 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #DDA0DD;
+        }
+
+        .test-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .test-nav-btn {
+            padding: 10px 20px;
+            background-color: #6A1B9A;
+            color: white;
+            border: none;
             border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
             transition: all 0.3s;
         }
 
-        .test-online-link:hover {
-            background-color: #7B1FA2;
-            transform: scale(1.05);
+        .test-nav-btn:hover {
+            background-color: #4A148C;
+        }
+
+        .submit-btn {
+            background-color: #CD5C5C;
+            padding: 12px 30px;
+            font-size: 16px;
+        }
+
+        .result-box {
+            text-align: center;
+            padding: 30px;
+            background-color: #E8F5E9;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .result-box h3 {
+            color: #2E7D32;
+            font-size: 28px;
+        }
+
+        .result-box .percentage {
+            font-size: 48px;
+            font-weight: bold;
+            color: #6A1B9A;
+        }
+
+        .reset-btn {
+            background-color: #9C27B0;
+            margin-top: 15px;
+        }
+
+        .question-indicator {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6A1B9A;
+            font-weight: bold;
         }
 
         .quote {
             text-align: center;
             font-family: 'Monotype Corsiva', cursive;
-            font-size: 26px;
+            font-size: 28px;
             color: #F3E5F5;
             margin-top: 30px;
             padding: 20px;
@@ -244,6 +364,10 @@
             .header h1 {
                 font-size: 32px;
             }
+            .tab-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -253,52 +377,59 @@
         <h1>Основы программирования на Pascal</h1>
     </div>
 
-    <div class="content-wrapper">
-        <div class="sidebar">
-            <h3>📚 Лекции</h3>
-            <ul>
-                <li><button onclick="loadFile('Лекция1.pdf', 'lecture', 1)">Лекция 1 — Введение. Понятие алгоритма</button></li>
-                <li><button onclick="loadFile('Лекция2.pdf', 'lecture', 2)">Лекция 2 — Типы данных</button></li>
-                <li><button onclick="loadFile('Лекция3.pdf', 'lecture', 3)">Лекция 3 — Операторы, выражения, ввод/вывод</button></li>
-                <li><button onclick="loadFile('Лекция4.pdf', 'lecture', 4)">Лекция 4 — Линейные алгоритмы и ветвление</button></li>
-                <li><button onclick="loadFile('Лекция5.pdf', 'lecture', 5)">Лекция 5 — Циклы</button></li>
-                <li><button onclick="loadFile('Лекция6.pdf', 'lecture', 6)">Лекция 6 — Массивы</button></li>
-                <li><button onclick="loadFile('Лекция7.pdf', 'lecture', 7)">Лекция 7 — Удаление, вставка, сортировка</button></li>
-            </ul>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('materials')">📚 Материалы</button>
+        <button class="tab-btn" onclick="switchTab('test')">📝 Тест</button>
+    </div>
 
-            <h3 style="margin-top: 20px;">✍️ Практика</h3>
-            <ul>
-                <li><button onclick="loadFile('Практика1.pdf', 'practice', 1)">Практика 1 — Алгоритмы</button></li>
-                <li><button onclick="loadFile('Практика2.pdf', 'practice', 2)">Практика 2 — Типы данных</button></li>
-                <li><button onclick="loadFile('Практика3.pdf', 'practice', 3)">Практика 3 — Основы Pascal</button></li>
-                <li><button onclick="loadFile('Практика4.pdf', 'practice', 4)">Практика 4 — Линейные алгоритмы и ветвление</button></li>
-                <li><button onclick="loadFile('Практика5.pdf', 'practice', 5)">Практика 5 — Циклы</button></li>
-                <li><button onclick="loadFile('Практика6.pdf', 'practice', 6)">Практика 6 — Массивы</button></li>
-                <li><button onclick="loadFile('Практика7.pdf', 'practice', 7)">Практика 7 — Удаление, вставка, сортировка</button></li>
-            </ul>
+    <!-- Вкладка с материалами -->
+    <div id="materials-tab" class="tab-content active">
+        <div class="content-wrapper">
+            <div class="sidebar">
+                <h3>📚 Лекции</h3>
+                <ul>
+                    <li><button onclick="loadFile('Лекция1.pdf', 'lecture', 1)">Лекция 1 — Введение. Понятие алгоритма</button></li>
+                    <li><button onclick="loadFile('Лекция2.pdf', 'lecture', 2)">Лекция 2 — Типы данных</button></li>
+                    <li><button onclick="loadFile('Лекция3.pdf', 'lecture', 3)">Лекция 3 — Операторы, выражения, ввод/вывод</button></li>
+                    <li><button onclick="loadFile('Лекция4.pdf', 'lecture', 4)">Лекция 4 — Линейные алгоритмы и ветвление</button></li>
+                    <li><button onclick="loadFile('Лекция5.pdf', 'lecture', 5)">Лекция 5 — Циклы</button></li>
+                    <li><button onclick="loadFile('Лекция6.pdf', 'lecture', 6)">Лекция 6 — Массивы</button></li>
+                    <li><button onclick="loadFile('Лекция7.pdf', 'lecture', 7)">Лекция 7 — Удаление, вставка, сортировка</button></li>
+                </ul>
 
-            <h3 style="margin-top: 20px;">📝 Тесты</h3>
-            <ul>
-                <li><button onclick="loadTestQuestions()">📋 Вопросы к тесту</button></li>
-            </ul>
-        </div>
+                <h3 style="margin-top: 20px;">✍️ Практика</h3>
+                <ul>
+                    <li><button onclick="loadFile('Практика1.pdf', 'practice', 1)">Практика 1 — Алгоритмы</button></li>
+                    <li><button onclick="loadFile('Практика2.pdf', 'practice', 2)">Практика 2 — Типы данных</button></li>
+                    <li><button onclick="loadFile('Практика3.pdf', 'practice', 3)">Практика 3 — Основы Pascal</button></li>
+                    <li><button onclick="loadFile('Практика4.pdf', 'practice', 4)">Практика 4 — Линейные алгоритмы и ветвление</button></li>
+                    <li><button onclick="loadFile('Практика5.pdf', 'practice', 5)">Практика 5 — Циклы</button></li>
+                    <li><button onclick="loadFile('Практика6.pdf', 'practice', 6)">Практика 6 — Массивы</button></li>
+                    <li><button onclick="loadFile('Практика7.pdf', 'practice', 7)">Практика 7 — Удаление, вставка, сортировка</button></li>
+                </ul>
 
-        <div class="viewer">
-            <div class="viewer-header">
-                <h2 id="current-title">Выберите лекцию или практику</h2>
+                <h3 style="margin-top: 20px;">📋 Вопросы</h3>
+                <ul>
+                    <li><button onclick="loadTestQuestions()">Вопросы к тесту (PDF)</button></li>
+                </ul>
             </div>
-            <iframe id="pdf-viewer" class="pdf-frame" src=""></iframe>
-            
-            <div class="nav-buttons" id="nav-buttons">
-                <button class="nav-btn nav-home" onclick="goHome()">🏠 Главная</button>
+
+            <div class="viewer">
+                <div class="viewer-header">
+                    <h2 id="current-title">Выберите лекцию или практику</h2>
+                </div>
+                <iframe id="pdf-viewer" class="pdf-frame" src=""></iframe>
+                
+                <div class="nav-buttons" id="nav-buttons">
+                    <button class="nav-btn nav-home" onclick="goHome()">🏠 Главная</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Блок с онлайн-тестом -->
-    <div class="test-online">
-        <h3>✅ Пройти онлайн-тест</h3>
-        <a class="test-online-link" href="https://onlinetestpad.com/c37hmemuksg6g" target="_blank">Начать тестирование</a>
+    <!-- Вкладка с тестом -->
+    <div id="test-tab" class="tab-content">
+        <div id="test-area"></div>
     </div>
 
     <div class="quote">
@@ -310,6 +441,268 @@
 </div>
 
 <script>
+    // Переключение вкладок
+    function switchTab(tabName) {
+        const tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+        event.target.classList.add('active');
+        
+        if (tabName === 'test') {
+            renderTest();
+        }
+    }
+
+    // Данные теста
+    const testData = {
+        answers: {},
+        questions: [
+            // Часть 1 (1-15)
+            { text: "1. Что такое алгоритм?", options: ["А) Программа на языке программирования", "Б) Описанная на некотором языке точная конечная система правил, определяющая порядок действий для решения задачи", "В) Набор произвольных инструкций для компьютера", "Г) Графическое изображение последовательности действий"], correct: "Б" },
+            { text: "2. Какое свойство алгоритма означает, что каждая команда должна быть однозначно понятна исполнителю?", options: ["А) Дискретность", "Б) Результативность", "В) Детерминированность", "Г) Массовость"], correct: "В" },
+            { text: "3. Каким элементом блок-схемы обозначается проверка условия?", options: ["А) Прямоугольник", "Б) Параллелограмм", "В) Ромб", "Г) Овал"], correct: "В" },
+            { text: "4. Какой тип данных в Pascal предназначен для хранения целых чисел?", options: ["А) Real", "Б) Char", "В) Boolean", "Г) Integer"], correct: "Г" },
+            { text: "5. Какой оператор используется для очистки экрана в Pascal при подключенном модуле Crt?", options: ["А) ClrScr", "Б) ReadKey", "В) ClearWindow", "Г) Erase"], correct: "А" },
+            { text: "6. Что означает оператор a := a + 1?", options: ["А) Сравнить a с a+1", "Б) Присвоить переменной a значение a+1", "В) Проверить, равно ли a a+1", "Г) Вывести значение a+1"], correct: "Б" },
+            { text: "7. Какой оператор в Pascal реализует алгоритмическую конструкцию «Ветвление»?", options: ["А) For", "Б) While", "В) If", "Г) Repeat"], correct: "В" },
+            { text: "8. Что произойдёт, если в цикле с предусловием (While) условие изначально ложно?", options: ["А) Цикл выполнится один раз", "Б) Цикл выполнится бесконечно", "В) Тело цикла не выполнится ни разу", "Г) Программа завершится с ошибкой"], correct: "В" },
+            { text: "9. Какой цикл в Pascal гарантирует выполнение тела хотя бы один раз?", options: ["А) For", "Б) While", "В) Repeat..Until", "Г) Все перечисленные"], correct: "В" },
+            { text: "10. В каком случае удобно использовать цикл с параметром (For)?", options: ["А) Когда количество повторений заранее неизвестно", "Б) Когда количество повторений известно заранее", "В) Когда нужно выполнить тело цикла хотя бы один раз", "Г) Когда условие зависит от ввода пользователя"], correct: "Б" },
+            { text: "11. Как объявить одномерный массив из 15 целых чисел в Pascal?", options: ["А) var a: array[1..15] of real;", "Б) var a: array[1..15] of integer;", "В) var a: array[1..15] of char;", "Г) var a: array[1..15] of boolean;"], correct: "Б" },
+            { text: "12. Какой индекс у элемента, лежащего на главной диагонали квадратной матрицы?", options: ["А) i > j", "Б) i < j", "В) i = j", "Г) i + j = n + 1"], correct: "В" },
+            { text: "13. Что делает фрагмент кода for i := n downto m do X[i+1] := X[i];?", options: ["А) Сдвигает элементы влево", "Б) Сдвигает элементы вправо", "В) Удаляет элемент", "Г) Сортирует массив"], correct: "Б" },
+            { text: "14. Какой алгоритм сортировки называется «пузырьковым»?", options: ["А) Алгоритм, который делит массив на две части и рекурсивно сортирует каждую", "Б) Алгоритм, который сравнивает и меняет местами соседние элементы, проходя по массиву несколько раз", "В) Алгоритм, который вставляет каждый элемент в отсортированную часть массива", "Г) Алгоритм, который выбирает минимальный элемент и ставит его в начало"], correct: "Б" },
+            { text: "15. Что нужно изменить в пузырьковой сортировке, чтобы отсортировать массив по убыванию?", options: ["А) Изменить границы циклов", "Б) Изменить знак в условии сравнения", "В) Добавить дополнительный проход", "Г) Увеличить количество проходов"], correct: "Б" },
+            // Часть 2 (16-25)
+            { text: "16. Какие свойства являются свойствами алгоритма?", options: ["А) Дискретность", "Б) Цикличность", "В) Детерминированность", "Г) Результативность", "Д) Графичность"], correct: "А, В, Г", multi: true },
+            { text: "17. Какие типы данных относятся к целым в Pascal?", options: ["А) Integer", "Б) Real", "В) Byte", "Г) Word", "Д) Char"], correct: "А, В, Г", multi: true },
+            { text: "18. Какие операции являются логическими в Pascal?", options: ["А) +", "Б) And", "В) Or", "Г) Div", "Д) Not"], correct: "Б, В, Д", multi: true },
+            { text: "19. Какие способы описания алгоритмов существуют?", options: ["А) Словесное описание", "Б) Блок-схема", "В) Псевдокод", "Г) Программа на языке программирования", "Д) Устная речь без записи"], correct: "А, Б, В, Г", multi: true },
+            { text: "20. Какие типы циклов существуют в Pascal?", options: ["А) While", "Б) For", "В) Loop", "Г) Repeat..Until", "Д) Do..While"], correct: "А, Б, Г", multi: true },
+            { text: "21. Какие операторы используются для ввода и вывода данных в Pascal?", options: ["А) Read", "Б) Write", "В) Input", "Г) ReadLn", "Д) Print"], correct: "А, Б, Г", multi: true },
+            { text: "22. Какие операции сравнения существуют в Pascal?", options: ["А) =", "Б) !=", "В) <>", "Г) >=", "Д) =/"], correct: "А, В, Г", multi: true },
+            { text: "23. Какие утверждения о двумерных массивах верны?", options: ["А) Двумерный массив — это таблица", "Б) Для доступа к элементу нужны два индекса", "В) Двумерный массив не может содержать вещественные числа", "Г) Элементы на главной диагонали имеют условие i = j", "Д) Элементы на побочной диагонали имеют условие i + j = n + 1"], correct: "А, Б, Г, Д", multi: true },
+            { text: "24. Какие стандартные функции возвращают вещественный тип?", options: ["А) Sqrt(x)", "Б) Abs(x) при x: integer", "В) Sin(x)", "Г) Cos(x)", "Д) Ord(x)"], correct: "А, В, Г", multi: true },
+            { text: "25. Какие действия нужно выполнить при вставке элемента в массив?", options: ["А) Уменьшить размер массива", "Б) Сдвинуть элементы вправо, начиная с конца", "В) Записать новый элемент на указанную позицию", "Г) Увеличить размер массива на 1", "Д) Сдвинуть элементы влево, начиная с начала"], correct: "Б, В, Г", multi: true },
+            // Часть 3 (26-30) - текстовые ответы
+            { text: "26. Напишите оператор присваивания, который присваивает переменной s сумму переменных a и b.", options: [], correct: "s:=a+b", textAnswer: true },
+            { text: "27. Напишите заголовок программы с именем «Test».", options: [], correct: "program Test;", textAnswer: true },
+            { text: "28. Напишите одним словом тип переменной, которая может хранить значение True или False.", options: [], correct: "boolean", textAnswer: true },
+            { text: "29. Напишите одним словом тип цикла, который гарантированно выполняется хотя бы один раз.", options: [], correct: "Repeat", textAnswer: true },
+            { text: "30. Напишите одним словом оператор вывода в Pascal без перехода на новую строку.", options: [], correct: "Write", textAnswer: true }
+        ]
+    };
+
+    let currentQuestionIndex = 0;
+    let quizStarted = false;
+    let quizFinished = false;
+    let userAnswers = {};
+
+    function renderTest() {
+        if (!quizStarted || quizFinished) {
+            renderStartScreen();
+        } else {
+            renderCurrentQuestion();
+        }
+    }
+
+    function renderStartScreen() {
+        const testArea = document.getElementById('test-area');
+        testArea.innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+                <h2 style="color: #6A1B9A;">📝 Тест по курсу «Основы программирования на Pascal»</h2>
+                <p style="margin: 20px 0; color: #555;">Тест содержит 30 вопросов:</p>
+                <ul style="display: inline-block; text-align: left; color: #555;">
+                    <li>Вопросы 1-15 — выбор одного правильного ответа</li>
+                    <li>Вопросы 16-25 — выбор нескольких правильных ответов</li>
+                    <li>Вопросы 26-30 — ввод текстового ответа</li>
+                </ul>
+                <div style="margin-top: 30px;">
+                    <button class="test-nav-btn" onclick="startQuiz()">▶ Начать тест</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function startQuiz() {
+        quizStarted = true;
+        quizFinished = false;
+        currentQuestionIndex = 0;
+        userAnswers = {};
+        renderCurrentQuestion();
+    }
+
+    function renderCurrentQuestion() {
+        const q = testData.questions[currentQuestionIndex];
+        const testArea = document.getElementById('test-area');
+        
+        let optionsHtml = '';
+        if (q.textAnswer) {
+            const savedValue = userAnswers[currentQuestionIndex] || '';
+            optionsHtml = `
+                <div style="margin: 15px 0;">
+                    <input type="text" id="text-answer" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-size: 16px;" placeholder="Введите ответ..." value="${savedValue.replace(/"/g, '&quot;')}">
+                </div>
+            `;
+        } else if (q.multi) {
+            optionsHtml = '<div class="test-options">';
+            q.options.forEach(opt => {
+                const letter = opt.charAt(0);
+                const isChecked = userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].includes(letter);
+                optionsHtml += `
+                    <li onclick="toggleMultiOption(${currentQuestionIndex}, '${letter}')" style="${isChecked ? 'background-color: #DDA0DD; border-color: #6A1B9A;' : ''}">
+                        ${opt}
+                    </li>
+                `;
+            });
+            optionsHtml += '</div>';
+        } else {
+            optionsHtml = '<div class="test-options">';
+            q.options.forEach(opt => {
+                const letter = opt.charAt(0);
+                const isSelected = userAnswers[currentQuestionIndex] === letter;
+                optionsHtml += `
+                    <li onclick="selectOption(${currentQuestionIndex}, '${letter}')" style="${isSelected ? 'background-color: #DDA0DD; border-color: #6A1B9A;' : ''}">
+                        ${opt}
+                    </li>
+                `;
+            });
+            optionsHtml += '</div>';
+        }
+        
+        testArea.innerHTML = `
+            <div class="question-indicator">
+                Вопрос ${currentQuestionIndex + 1} из ${testData.questions.length}
+            </div>
+            <div class="test-question">
+                <p>${q.text}</p>
+                ${optionsHtml}
+            </div>
+            <div class="test-nav">
+                <button class="test-nav-btn" onclick="prevQuestion()" ${currentQuestionIndex === 0 ? 'disabled style="opacity:0.5;"' : ''}>← Назад</button>
+                <button class="test-nav-btn" onclick="nextQuestion()">${currentQuestionIndex === testData.questions.length - 1 ? 'Завершить' : 'Далее →'}</button>
+            </div>
+        `;
+    }
+
+    function selectOption(qIndex, letter) {
+        userAnswers[qIndex] = letter;
+        renderCurrentQuestion();
+    }
+
+    function toggleMultiOption(qIndex, letter) {
+        let current = userAnswers[qIndex] || '';
+        if (current.includes(letter)) {
+            current = current.split(', ').filter(l => l !== letter).join(', ');
+        } else {
+            current = current ? current + ', ' + letter : letter;
+        }
+        userAnswers[qIndex] = current;
+        renderCurrentQuestion();
+    }
+
+    function prevQuestion() {
+        if (currentQuestionIndex > 0) {
+            // Сохраняем текстовый ответ если есть
+            const textInput = document.getElementById('text-answer');
+            if (textInput) {
+                userAnswers[currentQuestionIndex] = textInput.value.trim();
+            }
+            currentQuestionIndex--;
+            renderCurrentQuestion();
+        }
+    }
+
+    function nextQuestion() {
+        // Сохраняем текстовый ответ если есть
+        const textInput = document.getElementById('text-answer');
+        if (textInput) {
+            userAnswers[currentQuestionIndex] = textInput.value.trim();
+        }
+        
+        if (currentQuestionIndex === testData.questions.length - 1) {
+            finishQuiz();
+        } else {
+            currentQuestionIndex++;
+            renderCurrentQuestion();
+        }
+    }
+
+    function finishQuiz() {
+        let correctCount = 0;
+        
+        for (let i = 0; i < testData.questions.length; i++) {
+            const q = testData.questions[i];
+            const userAnswer = userAnswers[i];
+            let correctAnswer = q.correct;
+            
+            if (!userAnswer) continue;
+            
+            if (q.textAnswer) {
+                // Для текстовых ответов — сравниваем без учёта регистра и лишних пробелов
+                const normalizedUser = userAnswer.trim().toLowerCase().replace(/\s/g, '');
+                const normalizedCorrect = correctAnswer.toLowerCase().replace(/\s/g, '');
+                if (normalizedUser === normalizedCorrect) correctCount++;
+            } else if (q.multi) {
+                // Для множественного выбора — сравниваем множества
+                const userSet = userAnswer.split(', ').filter(s => s).sort().join(',');
+                if (userSet === correctAnswer) correctCount++;
+            } else {
+                // Для одиночного выбора
+                if (userAnswer === correctAnswer) correctCount++;
+            }
+        }
+        
+        const percentage = Math.round((correctCount / testData.questions.length) * 100);
+        
+        const testArea = document.getElementById('test-area');
+        testArea.innerHTML = `
+            <div class="result-box">
+                <h3>🎉 Тест завершён! 🎉</h3>
+                <div class="percentage">${percentage}%</div>
+                <p style="margin: 15px 0;">Правильных ответов: ${correctCount} из ${testData.questions.length}</p>
+                <p>${percentage >= 80 ? '✨ Отлично! Вы отлично усвоили материал! ✨' : percentage >= 60 ? '👍 Неплохо! Но можно и лучше. 👍' : '📚 Стоит повторить материал. Удачи в изучении! 📚'}</p>
+                <button class="test-nav-btn reset-btn" onclick="resetQuiz()">🔄 Пройти тест заново</button>
+                <button class="test-nav-btn" style="background-color: #6A1B9A; margin-left: 10px;" onclick="showAnswers()">📋 Показать правильные ответы</button>
+            </div>
+        `;
+        
+        quizFinished = true;
+    }
+
+    function showAnswers() {
+        let resultHtml = '<div style="max-height: 70vh; overflow-y: auto; padding: 20px;">';
+        resultHtml += '<h2 style="color: #6A1B9A; text-align: center;">📖 Правильные ответы</h2>';
+        
+        for (let i = 0; i < testData.questions.length; i++) {
+            const q = testData.questions[i];
+            resultHtml += `
+                <div style="margin: 15px 0; padding: 10px; background-color: #F9F9F9; border-radius: 10px;">
+                    <p style="font-weight: bold;">${q.text}</p>
+                    <p style="color: #2E7D32;">✅ Правильный ответ: ${q.correct}</p>
+                </div>
+            `;
+        }
+        
+        resultHtml += '<div style="text-align: center; margin-top: 20px;"><button class="test-nav-btn" onclick="resetQuiz()">🔄 Пройти тест заново</button></div>';
+        resultHtml += '</div>';
+        
+        document.getElementById('test-area').innerHTML = resultHtml;
+    }
+
+    function resetQuiz() {
+        quizStarted = false;
+        quizFinished = false;
+        currentQuestionIndex = 0;
+        userAnswers = {};
+        renderStartScreen();
+    }
+
+    // Работа с PDF
     let currentType = 'lecture';
     let currentIndex = 0;
     let isTestQuestions = false;
@@ -369,25 +762,13 @@
         
         buttons += '<button class="nav-btn nav-home" onclick="goHome()">🏠 Главная</button>';
         
-        if (isTestQuestions) {
-            // Для вопросов к тесту — только кнопка "Главная"
-        }
-        else if (currentType === 'lecture') {
-            if (currentIndex > 1) {
-                buttons += `<button class="nav-btn nav-prev" onclick="loadFile('Лекция${currentIndex-1}.pdf', 'lecture', ${currentIndex-1})">← Предыдущая лекция</button>`;
-            }
-            if (currentIndex < lectures.length) {
-                buttons += `<button class="nav-btn nav-next" onclick="loadFile('Лекция${currentIndex+1}.pdf', 'lecture', ${currentIndex+1})">Следующая лекция →</button>`;
-            }
+        if (isTestQuestions) {} else if (currentType === 'lecture') {
+            if (currentIndex > 1) buttons += `<button class="nav-btn nav-prev" onclick="loadFile('Лекция${currentIndex-1}.pdf', 'lecture', ${currentIndex-1})">← Предыдущая лекция</button>`;
+            if (currentIndex < lectures.length) buttons += `<button class="nav-btn nav-next" onclick="loadFile('Лекция${currentIndex+1}.pdf', 'lecture', ${currentIndex+1})">Следующая лекция →</button>`;
             buttons += `<button class="nav-btn nav-practice" onclick="loadFile('Практика${currentIndex}.pdf', 'practice', ${currentIndex})">📖 Перейти к практике ${currentIndex}</button>`;
-        } 
-        else if (currentType === 'practice') {
-            if (currentIndex > 1) {
-                buttons += `<button class="nav-btn nav-prev" onclick="loadFile('Практика${currentIndex-1}.pdf', 'practice', ${currentIndex-1})">← Предыдущая практика</button>`;
-            }
-            if (currentIndex < practices.length) {
-                buttons += `<button class="nav-btn nav-next" onclick="loadFile('Практика${currentIndex+1}.pdf', 'practice', ${currentIndex+1})">Следующая практика →</button>`;
-            }
+        } else if (currentType === 'practice') {
+            if (currentIndex > 1) buttons += `<button class="nav-btn nav-prev" onclick="loadFile('Практика${currentIndex-1}.pdf', 'practice', ${currentIndex-1})">← Предыдущая практика</button>`;
+            if (currentIndex < practices.length) buttons += `<button class="nav-btn nav-next" onclick="loadFile('Практика${currentIndex+1}.pdf', 'practice', ${currentIndex+1})">Следующая практика →</button>`;
             buttons += `<button class="nav-btn nav-lecture" onclick="loadFile('Лекция${currentIndex}.pdf', 'lecture', ${currentIndex})">📚 Перейти к лекции ${currentIndex}</button>`;
         }
         
